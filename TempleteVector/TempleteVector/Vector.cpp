@@ -62,13 +62,15 @@ public:
 	}
 
 	void sortData() {
+		cout << "\n정렬을 시도합니다...\n";
 		sort(data, data+currentSize);
 	}
 
 	void printData() {
 		for (int i = 0; i < currentSize; i++) {
-			cout << data[i] <<endl;
+			cout << data[i] << " | ";
 		}
+		cout << "\n원소 개수: " << currentSize << " 배열 크기: " << currentCapacity <<endl;
 	}
 
 	~SimpleVector() {
@@ -79,19 +81,21 @@ public:
 int main() {
 	srand(time(NULL));
 	SimpleVector<int> myvec;
+	cout << "\n----------------------------------초기 벡터 정보----------------------------------" << endl;
+	myvec.printData();
 	for (int i = 0; i < 13; i++) {
 		myvec.push_back(i+rand()%50);
 	}
+	cout << "\n----------------------------------삽입 후 벡터 정보----------------------------------" << endl;
+	myvec.printData();
 	for (int i = 0; i < 5; i++) {
 		myvec.pop_back();
 	}
-
+	cout << "\n----------------------------------제거 후 벡터 정보----------------------------------" << endl;
 	myvec.printData();
 	myvec.sortData();
+	cout << "\n----------------------------------정렬된 벡터----------------------------------" << endl;
 	myvec.printData();
-
-	cout << myvec.size() << myvec.capacity();
-
 
 	return 0;
 }
